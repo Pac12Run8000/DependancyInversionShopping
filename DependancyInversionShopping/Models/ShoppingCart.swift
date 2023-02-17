@@ -10,14 +10,9 @@ import Foundation
 
 class ShoppingCart: ObservableObject, ShoppingCartProtocol {
     @Published var items: [String] = []
-    
-    
     @Published var total: Double = 0.0
     
-   
-    
     func addItem(item: String) {
-        
         items.append(item)
         print("item: \(item) , items: \(items)")
     }
@@ -34,7 +29,7 @@ class ShoppingCart: ObservableObject, ShoppingCartProtocol {
         for item in items {
             total += getPriceForItem(item)
         }
-        print("Total:\(total)")
+        
         return total
     }
     
