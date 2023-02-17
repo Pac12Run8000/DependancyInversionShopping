@@ -8,9 +8,11 @@
 import Foundation
 
 
-class ShoppingCart:ShoppingCartProtocol {
+class ShoppingCart: ObservableObject, ShoppingCartProtocol {
+    @Published var items: [String] = []
+    @Published var total: Double = 0.0
     
-    private var items: [String] = []
+   
     
     func addItem(item: String) {
         items.append(item)
