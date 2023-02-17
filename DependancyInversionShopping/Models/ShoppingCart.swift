@@ -10,12 +10,16 @@ import Foundation
 
 class ShoppingCart: ObservableObject, ShoppingCartProtocol {
     @Published var items: [String] = []
+    
+    
     @Published var total: Double = 0.0
     
    
     
     func addItem(item: String) {
+        
         items.append(item)
+        print("item: \(item) , items: \(items)")
     }
     
     func removeItem(item: String) {
@@ -30,6 +34,7 @@ class ShoppingCart: ObservableObject, ShoppingCartProtocol {
         for item in items {
             total += getPriceForItem(item)
         }
+        print("Total:\(total)")
         return total
     }
     
@@ -38,15 +43,15 @@ class ShoppingCart: ObservableObject, ShoppingCartProtocol {
         var cost:Double = 0.00
         switch item {
         case "Winning Boxing":
-            cost = 285.00
+            cost = 49.99
         case "Cleto Reyes":
-            cost = 229.00
+            cost = 49.99
         case "Title":
-            cost = 139.99
+            cost = 49.99
         case "Ringside":
-            cost = 106.00
+            cost = 49.99
         default:
-            cost = 60.00
+            cost = 49.99
         }
         return cost
     }
