@@ -15,10 +15,10 @@ class Checkout: ObservableObject, CheckoutProtocol {
     }
     
     func processOrder() {
-        let items = cart.items
-        let total = cart.getTotal()
+//        let items = cart.items
+//        let total = cart.getTotal()
         
-        print("Order processed for \(items.count) items for a total of \(total)")
+        print("Order processed for \(cart.items.count) items for a total of \(cart.getTotal())")
     }
 }
 
