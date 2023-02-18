@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import Foundation
+
+
 
 struct ContentView: View {
     @StateObject var cart = ShoppingCart()
+    @State var currentCheckout: Checkout? = nil
+
+    
     let items = ["Winning", "Cleto Reyes", "Grant", "Title", "Ringside"]
     
     var body: some View {
@@ -53,11 +59,23 @@ struct ContentView: View {
                             }
                         }
                     }
+                    
+                }
+                Spacer()
+                    .frame(height: 40)
+                VStack {
+                    Button("Fullfill Order") {
+                        currentCheckout = Checkout(cart: cart)
+                        currentCheckout?.processOrder()
+                    }
                 }
             }
             .border(Color.black, width: 3)
             .padding()
     }
+    
+    
+    
     
     func formatCurrency(amount: Double) -> String {
         let formatter = NumberFormatter()

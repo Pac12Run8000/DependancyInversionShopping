@@ -7,33 +7,32 @@
 
 import Foundation
 
-class Checkout:CheckoutProtocol {
-    private let cart: ShoppingCartProtocol
+//class Checkout: ObservableObject, CheckoutProtocol {
+//    let cart: ShoppingCartProtocol
+//
+//    init(cart: ShoppingCartProtocol) {
+//        self.cart = cart
+//    }
+//
+//    func processOrder() {
+//        // Do something to process the order
+//        print("Order processed for \(cart.items.count) items for a total of \(cart.getTotal())")
+//    }
+//}
 
+class Checkout: ObservableObject, CheckoutProtocol {
+    let cart: ShoppingCartProtocol
+    
     init(cart: ShoppingCartProtocol) {
         self.cart = cart
     }
     
     func processOrder() {
-        // Get the total price from the shopping cart
-        let totalPrice = cart.getTotal()
+        let items = cart.items
+        let total = cart.getTotal()
         
-        // Process the order, e.g. by charging the user's credit card
-        processPayment(totalPrice: totalPrice)
-        
-        // Empty the shopping cart
-        emptyCart()
+        print("Order processed for \(items.count) items for a total of \(total)")
     }
-    
-    private func processPayment(totalPrice: Double) {
-        // Implement your own payment processing logic here
-        print("Processing payment of \(totalPrice) dollars...")
-    }
-    
-    private func emptyCart() {
-        // Implement your own cart emptying logic here
-        print("Emptying shopping cart...")
-    }
-    
-    
 }
+
+
