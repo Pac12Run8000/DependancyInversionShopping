@@ -13,7 +13,6 @@ import Foundation
 struct ContentView: View {
     @StateObject var cart = ShoppingCart()
     @State var currentCheckout: Checkout? = nil
-
     
     let items = ["Winning", "Cleto Reyes", "Grant", "Title", "Ringside"]
     
